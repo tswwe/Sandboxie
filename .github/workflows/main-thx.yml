@@ -1,4 +1,4 @@
-name: CI
+name: CI-thx-x64
 
 on:
   workflow_dispatch:
