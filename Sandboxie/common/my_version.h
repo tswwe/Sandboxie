@@ -26,7 +26,7 @@
 
 #define VERSION_MJR		5
 #define VERSION_MIN 	71
-#define VERSION_REV 	0
+#define VERSION_REV 	1
 #define VERSION_UPD 	0
 
 #if VERSION_UPD > 0
@@ -50,6 +50,8 @@
 
 #define SANDBOXIE               L"Sandboxie"
 #define SBIE                    L"SBIE"
+
+#define SBIE_RID                100 // must be between 80 and 111 inclusive
 
 #define SANDBOXIE_USER			L"Sandboxie"
 

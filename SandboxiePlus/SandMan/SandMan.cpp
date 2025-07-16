@@ -1939,9 +1939,15 @@ void CSandMan::timerEvent(QTimerEvent* pEvent)
 				}
 			}
 
+			QString AllTemplatesStr;
+			foreach(auto& Templates, AllTemplates) {
+				AllTemplatesStr.append(QString::fromWCharArray(L"\u2022 ")); // Unicode bullet
+				AllTemplatesStr.append("<b>" + Templates  + "</b><br />");
+			}
+
 			bool State = false;
-			CleanupTemplates = CCheckableMessageBox::question(this, "Sandboxie-Plus", tr("Some compatibility templates (%1) are missing, probably deleted, do you want to remove them from all boxes?")
-				.arg(AllTemplates.join(", "))
+			CleanupTemplates = CCheckableMessageBox::question(this, "Sandboxie-Plus", tr("Some compatibility templates are missing:<br /><br />%1<br />Probably deleted, do you want to remove them from all boxes?")
+				.arg(AllTemplatesStr)
 				, tr("Don't show this message again."), &State, QDialogButtonBox::Yes | QDialogButtonBox::No, QDialogButtonBox::Yes, QMessageBox::Information) == QDialogButtonBox::Yes ? 1 : 0;
 
 			if (State)
@@ -1963,6 +1969,9 @@ void CSandMan::timerEvent(QTimerEvent* pEvent)
 				foreach(const QString & Template, I.value())
 					Section->DelValue("Template", Template);
 				Section->SetRefreshOnChange(true);
+				auto pBoxEx = Section.objectCast<CSandBoxPlus>();
+				if (pBoxEx && pBoxEx->IsPortable())
+					pBoxEx->CommitIniChanges();
 			}
 
 			theAPI->CommitIniChanges();
@@ -2385,7 +2394,7 @@ void CSandMan::OnBoxClosed(const CSandBoxPtr& pBox)
 	if (!to_delete.isEmpty()) {
 		foreach(const QString& Value, to_delete) {
 			if (tempValLocalPrefix.compare(Value.left(11)) == 0)
-				theAPI->SbieIniSet("Template_" + tempValLocalPrefix, "*", "", CSbieAPI::eIniUpdate);
+				theAPI->SbieIniSet("Template_" + tempValLocalPrefix, "*", "", CSbieIni::eIniUpdate);
 			list.removeAt(list.indexOf(Value));
 		}
 		pBox->UpdateTextList("Template", list, FALSE);
@@ -2455,19 +2464,23 @@ void CSandMan::OnStatusChanged()
 			if (PortableRootDir == 2)
 			{
 				QString NtBoxRoot = theAPI->GetGlobalSettings()->GetText("FileRootPath", "\\??\\%SystemDrive%\\Sandbox\\%USER%\\%SANDBOX%", false, false).replace("GlobalSettings", "[BoxName]");
+				QString DosBoxPath = theAPI->Nt2DosPath(NtBoxRoot);
 
-				bool State = false;
-				PortableRootDir = CCheckableMessageBox::question(this, "Sandboxie-Plus",
-					tr("Sandboxie-Plus was started in portable mode, do you want to put the Sandbox folder into its parent directory?\nYes will choose: %1\nNo will choose: %2")
-					.arg(BoxPath + "\\[BoxName]")
-					.arg(theAPI->Nt2DosPath(NtBoxRoot))
-					, tr("Don't show this message again."), &State, QDialogButtonBox::Yes | QDialogButtonBox::No, QDialogButtonBox::Yes, QMessageBox::Information) == QDialogButtonBox::Yes ? 1 : 0;
+				if (DosBoxPath != BoxPath + "\\%SANDBOX%")
+				{
+					bool State = false;
+					PortableRootDir = CCheckableMessageBox::question(this, "Sandboxie-Plus",
+						tr("Sandboxie-Plus was started in portable mode, do you want to put the Sandbox folder into its parent directory?\nYes will choose: %1\nNo will choose: %2")
+						.arg(BoxPath + "\\[BoxName]")
+						.arg(DosBoxPath)
+						, tr("Don't show this message again."), &State, QDialogButtonBox::Yes | QDialogButtonBox::No, QDialogButtonBox::Yes, QMessageBox::Information) == QDialogButtonBox::Yes ? 1 : 0;
 
-				if (State)
-					theConf->SetValue("Options/PortableRootDir", PortableRootDir);
+					if (State)
+						theConf->SetValue("Options/PortableRootDir", PortableRootDir);
+				}
 			}
 
-			if (PortableRootDir)
+			if (PortableRootDir == 1)
 				theAPI->GetGlobalSettings()->SetText("FileRootPath", BoxPath + "\\%SANDBOX%");
 		}
 

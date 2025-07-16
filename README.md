@@ -130,6 +130,7 @@ If you find Sandboxie useful, then feel free to contribute through our [Contribu
 - typpos - UI additions / Documentation / Code fixes
 - Yeyixiao - Feature additions
 - Deezzir - Feature additions
+- wzxjohn - Code fixes, Documentation additions
 - okrc - Code fixes
 - Sapour - Code fixes
 - lmou523 - Code fixes
@@ -157,14 +158,14 @@ If you find Sandboxie useful, then feel free to contribute through our [Contribu
 ## 🌏 Translators
 
 - czoins - Arabic
-- yuhao2348732, 0x391F, nkh0472, yfdyh000, gexgd0419, Zerorigin, UnnamedOrange, DevSplash, Becods, okrc, 4rt3mi5, sepcnt, fzxx - Simplified Chinese
+- yuhao2348732, 0x391F, nkh0472, yfdyh000, gexgd0419, Zerorigin, UnnamedOrange, DevSplash, Becods, okrc, 4rt3mi5, sepcnt, fzxx, Vstory, GT-Stardust - Simplified Chinese
 - TragicLifeHu, Hulen, xiongsp - Traditional Chinese
 - RockyTDR - Dutch
 - clexanis, Mmoi-Fr, hippalectryon-0, Monsieur Pissou - French (provided by email)
 - bastik-1001, APMichael - German
 - timinoun - Hungarian (provided by email)
 - isaak654, DerivativeOfLog7 - Italian
-- takahiro-itou - Japanese
+- takahiro-itou, lllIIIlll - Japanese
 - VenusGirl - Korean
 - 7zip, AndrzejRafalowski - Polish ([provided separately](https://forum.xanasoft.com/threads/polish-translation.4/page-2))
 - JNylson - Portuguese and Brazilian Portuguese
@@ -176,3 +177,9 @@ If you find Sandboxie useful, then feel free to contribute through our [Contribu
 - GunGunGun - Vietnamese
 
 All translators are encouraged to look at the [Localization notes and tips](https://git.io/J9G19) before sending a translation.
+
+## 📚 Documentation Translators
+
+- Vstory, GT-Stardust, wzxjohn - Simplified Chinese
+
+All documentation translators are encouraged to look at the [Multilingual Translation Contribution Guide](https://github.com/sandboxie-plus/sandboxie-docs/issues/175#issuecomment-2840258519) before sending a translation.
