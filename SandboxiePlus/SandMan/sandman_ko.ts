@@ -531,7 +531,7 @@ Leet (L337) 말하기 수정을 적용하면 512비트로 증가하며, 완전�
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="335"/>
         <source>A sandbox isolates your host system from processes running within the box, it prevents them from making permanent changes to other programs and data in your computer. The level of isolation impacts your security as well as the compatibility with applications, hence there will be a different level of isolation depending on the selected Box Type. Sandboxie can also protect your personal data from being accessed by processes running under its supervision.</source>
-        <translation>샌드박스는 사용자의 호스트 시스템을 박스 내에서 실행 중인 프로세스에서 분리하여 사용자의 컴퓨터에 있는 다른 프로그램 및 데이터를 영구적으로 변경하지 못하도록 합니다. 격리 수준은 응용프로그램과의 호환성뿐만 아니라 보안에도 영향을 미치므로 선택한 박스 유형에 따라 격리 수준이 달라집니다. Sandboxie는 또한 Sandboxie의 감독 하에 실행되는 프로세스에 의해 개인 데이터가 액세스되는 것을 방지할 수 있습니다.</translation>
+        <translation>샌드박스는 사용자의 호스트 시스템을 박스 내에서 실행 중인 프로세스에서 분리하여 사용자의 컴퓨터에 있는 다른 프로그램 및 데이터를 영구적으로 변경하지 못하도록 합니다. 격리 수준은 응용 프로그램과의 호환성뿐만 아니라 보안에도 영향을 미치므로 선택한 박스 유형에 따라 격리 수준이 달라집니다. Sandboxie는 또한 Sandboxie의 감독 하에 실행되는 프로세스에 의해 개인 데이터가 액세스되는 것을 방지할 수 있습니다.</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="346"/>
@@ -1917,7 +1917,7 @@ You can use %USER% to save each users sandbox to an own fodler.</oldsource>
     <message>
         <location filename="Views/NtObjectView.cpp" line="213"/>
         <source>%1 - NT Object Namespace</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 - NT 개체 네임스페이스</translation>
     </message>
 </context>
 <context>
@@ -1925,17 +1925,17 @@ You can use %USER% to save each users sandbox to an own fodler.</oldsource>
     <message>
         <location filename="Models/NtObjectModel.cpp" line="726"/>
         <source>Name</source>
-        <translation type="unfinished">이름</translation>
+        <translation>이름</translation>
     </message>
     <message>
         <location filename="Models/NtObjectModel.cpp" line="727"/>
         <source>Type</source>
-        <translation type="unfinished">유형</translation>
+        <translation>유형</translation>
     </message>
     <message>
         <location filename="Models/NtObjectModel.cpp" line="728"/>
         <source>Access</source>
-        <translation type="unfinished">액세스</translation>
+        <translation>액세스</translation>
     </message>
 </context>
 <context>
@@ -4257,7 +4257,7 @@ Do you want to do the clean up?</source>
         <location filename="SandMan.cpp" line="1580"/>
         <source>This box does not enforce isolation, it is intended to be used as an &lt;a href=&quot;sbie://docs/compartment-mode&quot;&gt;application compartment&lt;/a&gt; for software virtualization only.</source>
         <oldsource>This box does not enforce isolation, it is intended to be used as an application compartment for software virtualization only.</oldsource>
-        <translation>이 박스는 분리를 강제하지 않으며 소프트웨어 가상화 전용 &lt;a href=&quot;sbie://docs/compartment-mode&quot;&gt;응용프로그램 구획&lt;/a&gt;으로 사용됩니다.</translation>
+        <translation>이 박스는 분리를 강제하지 않으며 소프트웨어 가상화 전용 &lt;a href=&quot;sbie://docs/compartment-mode&quot;&gt;응용 프로그램 구획&lt;/a&gt;으로 사용됩니다.</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="1588"/>
@@ -4310,7 +4310,7 @@ This box &lt;a href=&quot;sbie://docs/privacy-mode&quot;&gt;prevents access to a
     <message>
         <location filename="SandMan.cpp" line="2457"/>
         <source>Application</source>
-        <translation>응용프로그램</translation>
+        <translation>응용 프로그램</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="2457"/>
@@ -4339,7 +4339,7 @@ Sandboxie 업데이트가 있는지 확인해 주세요.</translation>
     <message>
         <location filename="SandMan.cpp" line="2606"/>
         <source>Your Windows build %1 exceeds the current known support capabilities of your Sandboxie version, Sandboxie will attempt to use the last-known offsets which may cause system instability.</source>
-        <translation>Windows 빌드 %1은 Sandboxie 버전의 현재 알려진 지원 기능을 초과합니다. Sandboxie는 마지막으로 알려진 오프셋을 사용하려고 시도하는데, 이로 인해 시스템이 불안정해질 수 있습니다.</translation>
+        <translation>귀하의 Windows 빌드 %1은 현재 알려진 Sandboxie 버전의 지원 범위를 초과합니다. Sandboxie는 마지막으로 알려진 오프셋을 사용하려 시도할 것이며, 이는 시스템 불안정성을 초래할 수 있습니다.</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3107"/>
@@ -4759,7 +4759,7 @@ No will choose: %2</source>
     <message>
         <location filename="SandMan.cpp" line="592"/>
         <source>Auto Expand Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>자동 확장 트리</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="637"/>
@@ -5886,7 +5886,7 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
         <location filename="Views/SbieView.cpp" line="246"/>
         <location filename="Views/SbieView.cpp" line="383"/>
         <source>Browse NT Namespace</source>
-        <translation type="unfinished"></translation>
+        <translation>NT 네임스페이스 찾아보기</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="249"/>
@@ -6369,7 +6369,7 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
         <location filename="Views/SbieView.cpp" line="1800"/>
         <source>The Sandboxie Start Menu will now be displayed. Select an application from the menu, and Sandboxie will create a new shortcut icon on your real desktop, which you can use to invoke the selected application under the supervision of Sandboxie.</source>
         <oldsource>The Sandboxie Start Menu will now be displayed. Select an application from the menu, and Sandboxie will create a newshortcut icon on your real desktop, which you can use to invoke the selected application under the supervision of Sandboxie.</oldsource>
-        <translation>이제 샌드박스 시작 메뉴가 표시됩니다. 메뉴에서 응용프로그램을 선택하면 Sandboxie가 실제 바탕 화면에 새 바로 가기 아이콘을 만듭니다. 이 아이콘을 사용하면 Sandboxie의 감독 하에 선택한 응용프로그램을 호출할 수 있습니다.</translation>
+        <translation>이제 샌드박스 시작 메뉴가 표시됩니다. 메뉴에서 응용 프로그램을 선택하면 Sandboxie가 실제 바탕 화면에 새 바로 가기 아이콘을 만듭니다. 이 아이콘을 사용하면 Sandboxie의 감독 하에 선택한 응용 프로그램을 호출할 수 있습니다.</translation>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="1855"/>
@@ -6538,17 +6538,17 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
         <location filename="Windows/SettingsWindow.cpp" line="258"/>
         <source>Remember previous state</source>
         <oldsource>Remember previouse state</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>이전 상태 기억</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="259"/>
         <source>Expand all groups</source>
-        <translation type="unfinished"></translation>
+        <translation>모든 그룹 확장</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="260"/>
         <source>Collapse all groups</source>
-        <translation type="unfinished"></translation>
+        <translation>모든 그룹 축소</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="262"/>
@@ -8373,7 +8373,7 @@ If you are a great patreaon supporter already, sandboxie can check online for an
     </message>
     <message>
         <source>A sandbox isolates your host system from processes running within the box, it prevents them from making permanent changes to other programs and data in your computer. The level of isolation impacts your security as well as the compatibility with applications, hence there will be a different level of isolation depending on the selected Box Type. Sandboxie can also protect your personal data from being accessed by processes running under its supervision.</source>
-        <translation type="vanished">샌드박스는 호스트 시스템을 포장에서 실행 중인 프로세스로부터 격리하여 컴퓨터의 다른 프로그램 및 데이터를 영구적으로 변경할 수 없도록 합니다. 격리 수준은 보안뿐만 아니라 응용프로그램과의 호환성에 영향을 미치므로 선택한 박스 유형에 따라 격리 수준이 달라집니다. Sandboxie는 또한 관리 하에 실행되는 프로세스에 의해 개인 데이터에 액세스되는 것을 방지할 수 있습니다.</translation>
+        <translation type="vanished">샌드박스는 호스트 시스템을 포장에서 실행 중인 프로세스로부터 격리하여 컴퓨터의 다른 프로그램 및 데이터를 영구적으로 변경할 수 없도록 합니다. 격리 수준은 보안뿐만 아니라 응용 프로그램과의 호환성에 영향을 미치므로 선택한 박스 유형에 따라 격리 수준이 달라집니다. Sandboxie는 또한 관리 하에 실행되는 프로세스에 의해 개인 데이터에 액세스되는 것을 방지할 수 있습니다.</translation>
     </message>
     <message>
         <source>Box info</source>
@@ -8473,7 +8473,7 @@ If you are a great patreaon supporter already, sandboxie can check online for an
     <message>
         <location filename="Forms/OptionsWindow.ui" line="698"/>
         <source>Sandboxie does not allow writing to host files, unless permitted by the user. When a sandboxed application attempts to modify a file, the entire file must be copied into the sandbox, for large files this can take a significate amount of time. Sandboxie offers options for handling these cases, which can be configured on this page.</source>
-        <translation>Sandboxie는 사용자가 허용하지 않는 한 호스트 파일에 쓰는 것을 허용하지 않습니다. 샌드박스 응용프로그램이 파일을 수정하려고 할 때 전체 파일을 샌드박스에 복사해야 합니다. 큰 파일의 경우 상당한 시간이 걸릴 수 있습니다. Sandboxie는 이 페이지에서 구성할 수 있는 이러한 사례를 처리하는 옵션을 제공합니다.</translation>
+        <translation>Sandboxie는 사용자가 허용하지 않는 한 호스트 파일에 쓰는 것을 허용하지 않습니다. 샌드박스 응용 프로그램이 파일을 수정하려고 할 때 전체 파일을 샌드박스에 복사해야 합니다. 큰 파일의 경우 상당한 시간이 걸릴 수 있습니다. Sandboxie는 이 페이지에서 구성할 수 있는 이러한 사례를 처리하는 옵션을 제공합니다.</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="708"/>
@@ -8597,7 +8597,7 @@ If you are a great patreaon supporter already, sandboxie can check online for an
     <message>
         <location filename="Forms/OptionsWindow.ui" line="490"/>
         <source>Allow elevated sandboxed applications to read the harddrive</source>
-        <translation>상승된 샌드박스 응용프로그램에서 하드 드라이브 읽기 허용</translation>
+        <translation>상승된 샌드박스 응용 프로그램에서 하드 드라이브 읽기 허용</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="470"/>
@@ -9363,7 +9363,7 @@ The process match level has a higher priority than the specificity and describes
     </message>
     <message>
         <source>Various advanced isolation features can break compatibility with some applications. If you are using this sandbox &lt;b&gt;NOT for Security&lt;/b&gt; but for simple application portability, by changing these options you can restore compatibility by sacrificing some security.</source>
-        <translation type="vanished">다양한 고급 격리 기능으로 인해 일부 응용 프로그램과의 호환성이 손상될 수 있습니다. 이 샌드박스를 &lt;b&gt;보안이 아닌&lt;/b&gt; 단순한 응용프로그램 이식용으로 사용하는 경우 이러한 옵션을 변경하여 일부 보안을 희생하여 호환성을 복원할 수 있습니다.</translation>
+        <translation type="vanished">다양한 고급 격리 기능으로 인해 일부 응용 프로그램과의 호환성이 손상될 수 있습니다. 이 샌드박스를 &lt;b&gt;보안이 아닌&lt;/b&gt; 단순한 응용 프로그램 이식용으로 사용하는 경우 이러한 옵션을 변경하여 일부 보안을 희생하여 호환성을 복원할 수 있습니다.</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="937"/>
@@ -9755,7 +9755,7 @@ This is done to prevent rogue processes inside the sandbox from creating a renam
     <message>
         <location filename="Forms/OptionsWindow.ui" line="325"/>
         <source>Alpha</source>
-        <translation type="unfinished"></translation>
+        <translation>알파</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="993"/>
@@ -11607,7 +11607,7 @@ Please note that this values are currently user specific and saved globally for 
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1153"/>
         <source>Group state on start</source>
-        <translation type="unfinished"></translation>
+        <translation>시작 시 그룹 상태</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1389"/>
@@ -11626,9 +11626,9 @@ Please note that this values are currently user specific and saved globally for 
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="2415"/>
-        <source>Use Sandboxie&apos;s own enhanced UAC prompt (experimental)</source>
-        <oldsource>Use Sandboxies own enhanced UAC prompt (experimental)</oldsource>
-        <translation>Sandboxie만의 향상된 UAC 프롬프트 사용 (실험용)</translation>
+        <source>Use Sandboxie&apos;s own enhanced UAC prompt (recommended)</source>
+        <oldsource>Use Sandboxie&apos;s own enhanced UAC prompt (experimental)</oldsource>
+        <translation>Sandboxie의 향상된 UAC 프롬프트 사용 (권장)</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="2425"/>
@@ -12112,8 +12112,9 @@ Unlike the preview channel, it does not include untested, potentially breaking, 
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="2329"/>
-        <source>Hook selected Win32k system calls to enable GPU acceleration (experimental)</source>
-        <translation>선택한 Win32k 시스템 호출을 후크하여 GPU 가속 (실험적) 사용</translation>
+        <source>Hook selected Win32k system calls to enable GPU acceleration (required for chrome, firefox and more)</source>
+        <oldsource>Hook selected Win32k system calls to enable GPU acceleration (experimental)</oldsource>
+        <translation>GPU 가속을 활성화하기 위해 선택된 Win32k 시스템 호출 연결 (Chrome, Firefox 등에 필요)</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="154"/>
@@ -12373,7 +12374,7 @@ Unlike the preview channel, it does not include untested, potentially breaking, 
     <message>
         <location filename="Forms/SettingsWindow.ui" line="2910"/>
         <source>Sandboxie has detected the following software applications in your system. Click OK to apply configuration settings, which will improve compatibility with these applications. These configuration settings will have effect in all existing sandboxes and in any new sandboxes.</source>
-        <translation>Sandboxie가 시스템에서 다음 소프트웨어 응용 프로그램을 탐지했습니다. 확인을 클릭하여 구성 설정을 적용하면 해당 응용프로그램과의 호환성이 향상됩니다. 이러한 구성 설정은 모든 기존 샌드박스 및 새 샌드박스에 적용됩니다.</translation>
+        <translation>Sandboxie가 시스템에서 다음 소프트웨어 응용 프로그램을 탐지했습니다. 확인을 클릭하여 구성 설정을 적용하면 해당 응용 프로그램과의 호환성이 향상됩니다. 이러한 구성 설정은 모든 기존 샌드박스 및 새 샌드박스에 적용됩니다.</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="2963"/>
