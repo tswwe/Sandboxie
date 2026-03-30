@@ -121,6 +121,8 @@ public:
 	virtual QString			GetFeatureStr();
 	virtual int				IsDyndataActive();
 
+	virtual bool			HasProcesses(const QString& BoxName);
+
 	// Forced Processes
 	virtual SB_STATUS		DisableForceProcess(bool Set, int Seconds = 0);
 	virtual bool			AreForceProcessDisabled();
@@ -181,6 +183,17 @@ public:
 
 	virtual SB_RESULT(int)	RunUpdateUtility(const QStringList& Params, quint32 Elevate = 0, bool Wait = false);
 
+	struct SWndInfo {
+		QString Title;
+		QList<quint32> hWnds;
+	};
+
+	virtual void			UpdateWindowMap();
+
+	virtual QString			GetProcessTitle(quint32 pid) { return m_WindowMap.value(pid).Title; }
+	virtual QList<quint32>	GetProcessWindows(quint32 pid) { return m_WindowMap.value(pid).hWnds; }
+	virtual QMap<quint32, SWndInfo> GetWindowMap() const { return m_WindowMap; }
+
 public slots:
 	virtual void			SendQueueRpl(quint32 RequestId, const QVariantMap& Result);
 
@@ -218,8 +231,6 @@ protected:
 	virtual QString			GetIniPath(bool* IsHome) const;
 	virtual QString			GetUserSection(QString* pUserName = NULL, bool* pIsAdmin = NULL) const;
 
-	virtual bool			HasProcesses(const QString& BoxName);
-
 	virtual bool			GetQueueReq();
 	virtual bool			GetLog();
 	virtual bool			GetMonitor();
@@ -246,6 +257,8 @@ protected:
 
 	QMap<QString, CSandBoxPtr> m_SandBoxes;
 	QMap<quint32, CBoxedProcessPtr> m_BoxedProxesses;
+
+	QMap<quint32, SWndInfo> m_WindowMap;
 
 	mutable QMutex			m_TraceMutex;
 	QVector<CTraceEntryPtr>	m_TraceCache;

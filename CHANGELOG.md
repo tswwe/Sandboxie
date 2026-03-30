@@ -4,14 +4,111 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-
-
-## [1.16.10 / 5.71.10] - 2026-01-??
+## [1.17.3 / 5.72.3] - 2026-03-29
 
 ### Added
-- Add icons to Sandboxie service applications #5160https://github.com/sandboxie-plus/Sandboxie/issues/5160#issuecomment-3706138019
+- added configurable window location settings to control which monitor main, non-main, file recovery, and notification windows open on, including a selectable fallback mode. [#4536](https://github.com/sandboxie-plus/Sandboxie/issues/4536) [#5238](https://github.com/sandboxie-plus/Sandboxie/pull/5238)
+  - Global Settings > Interface Config > Window Options
+- added "Label only" border mode option (`onlbl`, `ttllbl`, `alllbl`) that hides the colored border frame and shows only the sandbox name (or alias) label [#5239](https://github.com/sandboxie-plus/Sandboxie/pull/5239)
+- added MIDI workaround template for Windows 11 [#5183](https://github.com/sandboxie-plus/Sandboxie/issues/5183) [#5203](https://github.com/sandboxie-plus/Sandboxie/issues/5203#issuecomment-3938495163) (thanks xsmolasses)
+- added new tray customization options (Global Settings > Shell Integration > System Tray): [#5254](https://github.com/sandboxie-plus/Sandboxie/pull/5254)
+  - "Show icons in tray context menu" (`Options/TrayIcons`) — controls whether custom sandbox icons are displayed in the tray menu.
+  - "Show box alias name instead of box name in tray" (`Options/TrayUseAlias`) — displays the configured alias/display name in both compact and regular tray menus.
+  - "Show sandbox status as tooltip in tray list" (`Options/TrayStatusTip`) now supports tri-state behavior: unchecked = never, partial = while Ctrl or Shift is held (default), checked = always.
+  - "Show overlay icons for boxes in tray list" (`Options/TrayOverlayIcons`) — shows the same box-state overlays used in the main sandbox list (no-force, disk image mounted/unmounted, RAM disk, auto-delete) on tray icons in both the compact widget and the regular context menu.
+- added border capture exclusion via `HideBordersFromCapture`
+  - keeps border frames and labels out of screenshots and screen recordings; defaults to `CoverBoxedWindows`
+- added border label width and taskbar clipping options
+  - configurable via `BorderColor` label width and `BorderExcludeTaskbar`
+- added `UseFakeShellDispatch` option to provide synthetic `IShellDispatch` fallback (may fix some WebView2 issues)
+  - can be disabled per process via `UseFakeShellDispatch=process,n`
+- added `Template_OnScreenKeyboard` (Windows 11) to fix On-Screen Keyboard freezes when used with sandboxed programs
 
- 
+### Changed
+- reduced constant GUI CPU usage by caching custom `BoxIcon` resolution in the sandbox model instead of reloading icon resources on refresh
+- throttled internet connectivity check in SandMan main timer to once every 60 seconds and cache the result
+  - updater only runs when device has internet connectivity, eliminating wasted network attempts and reducing repeated `HKLM\\SYSTEM\\Setup\\SystemSetupInProgress` registry checks
+- changed duplicate sandbox behavior so active box aliases also receive the "Copy" suffix on duplication
+- changed tray sandbox/group ordering to mirror sandbox list mode (manual / ascending / descending), including group ordering
+- improved tray/sandbox submenu icon caching by resolving `DblClickAction` target paths (`GetCommandFile`) only on cache misses and caching `LoadWindowsIcon(path,index)` results for Run/Start menu entries, reducing repeated system icon extraction when opening menus
+- improved border rendering
+
+### Fixed
+- fixed false "Some changes haven't been saved yet" prompt when leaving Network Options with unlisted-process network mode set to non-default
+- fixed duplicated boxes not preserving the original box group assignment
+- fixed double-clicking on a group's empty path/command line crash [#5253](https://github.com/sandboxie-plus/Sandboxie/pull/5253)
+- fixed compact tray box list clipping long sandbox names; width is now measured precisely per item using font metrics and scales correctly at any DPI [#5254](https://github.com/sandboxie-plus/Sandboxie/pull/5254)
+- fixed WOW64 registry view inheritance for relative key opens in `SbieDll`, preserving parent `KEY_WOW64_32KEY/KEY_WOW64_64KEY` semantics across `NtOpenKey`/`NtCreateKey` [#5171](https://github.com/sandboxie-plus/Sandboxie/issue/7171) [#5244](https://github.com/sandboxie-plus/Sandboxie/pull/5244)
+- fixed handle leak in `ScanStartMenu`: `IShellLinkW` and `IPersistFile` COM interfaces were never released in `ResolveShortcut`, permanently retaining handles (file, registry, icon) for every `.lnk` shortcut scanned; replaced raw pointers with `CComPtr` to ensure `Release()` on all exit paths
+- fixed parsing logic for `ClosedClsid` and `ClosedRT` settings [#5263](https://github.com/sandboxie-plus/Sandboxie/pull/5263)
+- FIXED SECURITY ISSUE ID-32: EditPassword Hash Entropy Loss, new passwords will ne salted SHA256 and base64 encoded
+  - Note: the fix only takes effect when the password is being set, existing passwords remain weak
+- fixed Local Denial of Service (DoS) Vulnerability Exploitable by Sandboxed Process CVE-2026-32603 (reported by sammy12342)
+- fixed Sandboxie-Plus EditAdminOnly Bypass via INI CRLF Injection (reported by sammy12342)
+- fixed issues with GetRawInputDeviceInfoSlave (reported by sammy12342)
+- fixed an issue with RunSbieCtrl (reported by Yanchon918s)
+- fixed name validation in ProcessServer handlers (reported by Yanchon918s)
+- fixed parameter validation in NamedPipeServer (reported by Yanchon918s)
+- fixed file integrity issues with updater (reported by sammy12342)
+
+
+## [1.17.2 / 5.72.2] - 2026-02-18
+
+### Added
+- added border label alias support
+
+### Changed
+- improved border mode UI labels and exposed `all` mode in the selector
+- reworked `Rename Sandbox` dialog in SandMan: added dedicated alias controls, persisted `Hide alias` preference, improved stable/dynamic dialog resizing, and disabled alias is now saved as `BoxAliasDisabled` [#4657](https://github.com/sandboxie-plus/Sandboxie/pull/4657) [#5231](https://github.com/sandboxie-plus/Sandboxie/pull/5231)
+
+### Fixed
+- fixed border overlay getting stuck when border label text is disabled (`no` mode) [#5230](https://github.com/sandboxie-plus/Sandboxie/pull/5230)
+- fixed stale focused-window border visibility when foreground window becomes invalid/invisible
+- fixed `all` border mode opacity updates to consistently apply configured alpha
+- fixed duplicate Name column appearing in the Config Dump tab under Template Settings [#4900](https://github.com/sandboxie-plus/Sandboxie/issues/4900)  [#5232](https://github.com/sandboxie-plus/Sandboxie/pull/5232)
+
+
+
+## [1.17.1 / 5.72.1] - 2026-02-16
+
+### Fixed
+- fixed regression SbieSvc IPC failing on Windows 10 introduced in 1.17.0 [#5226](https://github.com/sandboxie-plus/Sandboxie/issues/5226)
+- fixed regression Microsoft Edge failing to fully terminate on close
+- fixed crash in Vintage View mode
+- fixed logic for chkNotUntrusted and chkCreateToken
+
+
+
+## [1.17.0 / 5.72.0] - 2026-02-16
+
+### Added
+- added icons to Sandboxie service applications [#5160](https://github.com/sandboxie-plus/Sandboxie/issues/5160#issuecomment-3706138019)
+- added name of sandbox in the border [#3746](https://github.com/sandboxie-plus/Sandboxie/issues/3746)
+- added global option 'ForceBoxDocs=y', allows to force all programs opening a file from a boxed path to the appropriate sandbox
+- added new box border mode 'all', when active the border is shown for all windows of sandboxed processes, not only for the one in focus
+- added missing serial number support to SbieCtrl
+- added mechanism to export/import multiple boxes at once
+- added 'UseAlternateIpcNaming=y', instead of using a separated NT Object namespace, in this mode sandboxed objects get a name suffix
+  - Note: this mode can only be used with Application Compartment boxes, as the SbieDrv would otherwise block the accesses
+
+### Changed
+- validated compatibility with Windows build 28020 and updated DynData
+- when 'UseCreateToken=y', we always use 'CopyTokenAttributes=y' to fix UWP issues
+  - to force 'UseCreateToken=y', 'SandboxieAllGroup=y' is the new default
+- 'NoUntrustedToken=y' can now be set in box options
+- reworked LPC server implementation in SbieSvc, to-do: switch to ALPC
+- improved Application Compartment IPC handling
+- improved RenameSection handling to preserve comments and original section order [#5220](https://github.com/sandboxie-plus/Sandboxie/pull/5220)
+
+### Fixed
+- fixed failure to mount registry when starting a UWP application sandboxed
+- fixed API CryptUnprotectData always returns a wrong ppszDataDescr [#5191](https://github.com/sandboxie-plus/Sandboxie/issues/5191)
+- fixed handle leak in SbieDll.dll
+- fixed the issue with switching sandbox sorting in the view [#5201](https://github.com/sandboxie-plus/Sandboxie/pull/5201) (thanks Catreap)
+- fixed Microsoft Edge 144 crashes in Application Compartment boxes [#5188](https://github.com/sandboxie-plus/Sandboxie/issues/5188)
+- fixed File Searching bar crashes when performing multiple searches within a sandbox [#5166](https://github.com/sandboxie-plus/Sandboxie/issues/5166) [#5221](https://github.com/sandboxie-plus/Sandboxie/pull/5221)
+
+
 
 ## [1.16.9 / 5.71.9] - 2026-01-02
 
@@ -30,8 +127,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fixed running Firefox under Sandboxie causes AppModel-Runtime error(s) in Event Viewer [#5135](https://github.com/sandboxie-plus/Sandboxie/issues/5135)
 - fixed Tor Browser tabs crash in highest security level [#5116](https://github.com/sandboxie-plus/Sandboxie/issues/5116)
 - fixed Chrome Portable window tooltip gets stuck [#5051](https://github.com/sandboxie-plus/Sandboxie/issues/5051)
-- fixed BSOD (0x50) in SbieDrv.sys during high-load GPU process creation on Windows Server 2022 [#5149](https://github.com/sandboxie-plus/Sandboxie/issues/5149)
-- fixed OfficeClickToRun.exe always crash, WINWORD.EXE can not work properly [#5153](https://github.com/sandboxie-plus/Sandboxie/issues/5153)
+- fixed BSoD (0x50) in SbieDrv.sys during high-load GPU process creation on Windows Server 2022 [#5149](https://github.com/sandboxie-plus/Sandboxie/issues/5149)
+- fixed OfficeClickToRun.exe always crash, WINWORD.EXE cannot work properly [#5153](https://github.com/sandboxie-plus/Sandboxie/issues/5153)
 - fixed prolonged lag when uninstalling/deleting software installed exclusively within the sandbox environment [#5028](https://github.com/sandboxie-plus/Sandboxie/issues/5028)
 
 
@@ -1525,7 +1622,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - reworked CreateAppContainerToken hook to return a restricted token for the issue [#2762](https://github.com/sandboxie-plus/Sandboxie/issues/2762)
   - Note: this behaviour can be disabled with 'FakeAppContainerToken=program.exe,n'
-- enabled app container compatibility in App Compartment mode
+- enabled app container compatibility in Application Compartment mode
   - Note: this should improve Microsoft Edge compatibility
 - added web browser compatibility template wizard [#2761](https://github.com/sandboxie-plus/Sandboxie/issues/2761)
 - added a mechanism to dynamically detect Chromium and Firefox based browsers
@@ -1533,7 +1630,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - renamed 'DropAppContainerTokens=program.exe,n' to 'DropAppContainerToken=program.exe,n'
-- 'DropAppContainerToken=program.exe,y' can now be used in App Compartment boxes, however it is not recommended security-wise
+- 'DropAppContainerToken=program.exe,y' can now be used in Application Compartment boxes, however it is not recommended security-wise
 - the desktop security workaround used for Chrome, Firefox and Acrobat is now enabled by default, you can disable it with "UseSbieDeskHack=n"
   - Note: this should allow Electron apps to run without 'SpecialImage=chrome,program.exe'
 - disabled old token hacks, as these seem to be no longer required with the new App Container token

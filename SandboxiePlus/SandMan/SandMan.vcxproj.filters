@@ -213,6 +213,9 @@
     <ClCompile Include="AddonManager.cpp">
       <Filter>SandMan</Filter>
     </ClCompile>
+    <ClCompile Include="BoxTransfer.cpp">
+      <Filter>SandMan</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\SandboxieTools\Common\verify.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -226,6 +229,9 @@
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="Windows\ExtractDialog.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\RenameSandboxDialog.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="Helpers\TabOrder.cpp">
@@ -397,6 +403,9 @@
     <QtMoc Include="AddonManager.h">
       <Filter>SandMan</Filter>
     </QtMoc>
+    <QtMoc Include="BoxTransfer.h">
+      <Filter>SandMan</Filter>
+    </QtMoc>
     <QtMoc Include="Engine\ScriptManager.h">
       <Filter>Engine</Filter>
     </QtMoc>
@@ -407,6 +416,9 @@
       <Filter>Windows</Filter>
     </QtMoc>
     <QtMoc Include="Windows\ExtractDialog.h">
+      <Filter>Windows</Filter>
+    </QtMoc>
+    <QtMoc Include="Windows\RenameSandboxDialog.h">
       <Filter>Windows</Filter>
     </QtMoc>
     <QtMoc Include="Helpers\IniHighlighter.h">
@@ -467,6 +479,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Forms\ExtractDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Forms\RenameSandboxDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Forms\EditorSettingsWindow.ui">

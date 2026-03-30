@@ -312,6 +312,7 @@
     <ClCompile Include="Models\SbieModel.cpp" />
     <ClCompile Include="OnlineUpdater.cpp" />
     <ClCompile Include="AddonManager.cpp" />
+    <ClCompile Include="BoxTransfer.cpp" />
     <ClCompile Include="SandMan.cpp" />
     <ClCompile Include="SandManRecovery.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -380,6 +381,7 @@
     </ClCompile>
     <ClCompile Include="Windows\CompressDialog.cpp" />
     <ClCompile Include="Windows\ExtractDialog.cpp" />
+    <ClCompile Include="Windows\RenameSandboxDialog.cpp" />
     <ClCompile Include="Windows\OptionsAccess.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -506,6 +508,7 @@
     <QtMoc Include="Windows\ExtractDialog.h" />
     <QtMoc Include="Windows\TestProxyDialog.h" />
     <QtMoc Include="Windows\CompressDialog.h" />
+    <QtMoc Include="Windows\RenameSandboxDialog.h" />
     <QtMoc Include="Wizards\BoxAssistant.h" />
     <QtMoc Include="Windows\BoxImageWindow.h" />
     <QtMoc Include="Views\StackView.h" />
@@ -550,9 +553,10 @@
     <ClInclude Include="Helpers\ThreadSafeQueue.h" />
     <ClInclude Include="Helpers\WinAdmin.h" />
     <QtMoc Include="Models\MonitorModel.h" />
+    <QtMoc Include="Models\NtObjectModel.h" />
     <ClInclude Include="Helpers\WinHelper.h" />
     <QtMoc Include="AddonManager.h" />
-    <QtMoc Include="Models\NtObjectModel.h" />
+    <QtMoc Include="BoxTransfer.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="SbiePlusAPI.h" />
     <QtMoc Include="SbieProcess.h" />
@@ -571,6 +575,7 @@
     <QtUic Include="Forms\BoxImageWindow.ui" />
     <QtUic Include="Forms\CompressDialog.ui" />
     <QtUic Include="Forms\ExtractDialog.ui" />
+    <QtUic Include="Forms\RenameSandboxDialog.ui" />
     <QtUic Include="Forms\OptionsWindow.ui" />
     <QtUic Include="Forms\PopUpWindow.ui" />
     <QtUic Include="Forms\RecoveryWindow.ui" />

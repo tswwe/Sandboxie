@@ -44,6 +44,7 @@ HEADERS += ./stdafx.h \
     ./Windows/BoxImageWindow.h \
     ./Windows/CompressDialog.h \
     ./Windows/ExtractDialog.h \
+    ./Windows/RenameSandboxDialog.h \
     ./Engine/BoxEngine.h \
     ./Engine/ScriptManager.h \
     ./Engine/BoxObject.h \
@@ -54,7 +55,8 @@ HEADERS += ./stdafx.h \
     ./Engine/JSEngineExt.h \
     ./Engine/WizardObject.h \
     ./CustomStyles.h \
-    ./AddonManager.h
+    ./AddonManager.h \
+    ./BoxTransfer.h
 
 SOURCES += ./main.cpp \
     ../../SandboxieTools/Common/verify.c \
@@ -100,6 +102,7 @@ SOURCES += ./main.cpp \
     ./Windows/BoxImageWindow.cpp \
     ./Windows/CompressDialog.cpp \
     ./Windows/ExtractDialog.cpp \
+    ./Windows/RenameSandboxDialog.cpp \
     ./Engine/BoxEngine.cpp \
     ./Engine/ScriptManager.cpp \
     ./Engine/BoxObject.cpp \
@@ -107,7 +110,8 @@ SOURCES += ./main.cpp \
     ./Engine/SbieObject.cpp \
     ./Engine/JSEngineExt.cpp \
     ./Engine/SysObject.cpp \
-    ./AddonManager.cpp
+    ./AddonManager.cpp \
+    ./BoxTransfer.cpp
 
 FORMS += ./Forms/EditorSettingsWindow.ui \
     ./Forms/SelectBoxWindow.ui \
@@ -119,6 +123,7 @@ FORMS += ./Forms/EditorSettingsWindow.ui \
     ./Forms/BoxImageWindow.ui \
     ./Forms/CompressDialog.ui \
     ./Forms/ExtractDialog.ui \
+    ./Forms/RenameSandboxDialog.ui \
     ./Forms/TestProxyDialog.ui
 
 TRANSLATIONS += sandman_ar.ts \
