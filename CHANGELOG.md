@@ -7,10 +7,42 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [1.17.7 / 5.72.7] - 2026-05-??
+## [1.17.8 / 5.72.8] - 2026-06-14
+
+### Added
+- added `DisableCustomTitleOpt=[process,][y|n]` to allow `[#]` sandboxie title markers on custom-titlebar windows (Delphi VCL, Qt, Electron) that were previously skipped to prevent DWM repaint CPU loops [#5387](https://github.com/sandboxie-plus/Sandboxie/issues/5387)
+
+### Changed
+- updated bundled ImDisk driver to 3.0.2 [#5419](https://github.com/sandboxie-plus/Sandboxie/issues/5419)
+
+### Fixed
+- fix Suppress logs for expected non-user SIDs [#5422](https://github.com/sandboxie-plus/Sandboxie/pull/5422)
+- SbieSvc.exe: SBIE2218/2219 error when run program as administrator [#5417](https://github.com/sandboxie-plus/Sandboxie/issues/5417)
+- fixed explorer.exe crashes in Application Compartment when Huorong Security is installed [#5423](https://github.com/sandboxie-plus/Sandboxie/issues/5423)
+
+
+
+
+
+## [1.17.7 / 5.72.7] - 2026-06-07
+
+### Added
+- added a Global Settings checkbox for `ForceBoxDocs` under Program Control > Force Process Options
 
 ### Changed
 - disabled rich text acceptance in 'Edit ini Section' [baa6968](https://github.com/sandboxie-plus/Sandboxie/commit/baa6968420e0ebd6b4cd93821cf019fcd0e0fc35)
+- extended completion system with context-aware filtering, improved INI key resolution, regex updates, and tooltip placement enhancements [6db2a04](https://github.com/sandboxie-plus/Sandboxie/commit/6db2a04f805b49a049b309212bfa8e3a8497ad99)
+
+### Fixed
+- fixed crash in VMware when running inside sandbox caused by NtQueryDirectoryObject hook returning non-null-terminated strings and uninitialized padding bytes in OBJECT_DIRECTORY_INFORMATION structures, which caused QueryDosDeviceW to crash in wcscmp [#5390](https://github.com/sandboxie-plus/Sandboxie/issues/5390)
+- Add short-name fallback cache and heuristics [#5404](https://github.com/sandboxie-plus/Sandboxie/pull/5404)
+- fixed addon setup not working introduced in a recent build
+- fixed Starting from version 1.17.4, using the 'Sandbox with Data Protection' type box causes PowerShell to wait indefinitely, while there is no such bug with other types. [#5408](https://github.com/sandboxie-plus/Sandboxie/issues/5408)
+- fixed Importing encrypted box no longer creates encrypted image in v1.17.6 [#5399](https://github.com/sandboxie-plus/Sandboxie/issues/5399)
+- fixed EditorSettings fuzzy matching not applied, showing few/no completion entries, and table cell highlighting not updating
+- fixed Error enumerating and deleting folder. [#5406](https://github.com/sandboxie-plus/Sandboxie/issues/5406)
+- fixed black box import/export when 'ProtectAdminOnly=y' (default) and SandMan does not run as admin
+
 
 
 
@@ -26,7 +58,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   - the new format is 1:1 compatible with portable boxes, allowing to just unpack an export archive and add the boxes as portable
 
 ### Fixed
-- fixed issue with hook registration
+- FIXED SECURITY ISSUE ID-40: issue with APC injection vulnerability
 - fixed high CPU usage caused by DWM with applications using custom title bars (e.g., Delphi VCL)
 
 
