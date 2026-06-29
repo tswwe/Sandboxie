@@ -40,24 +40,25 @@ concurrency:
 
 env:
   CODEQL_ACTION_FILE_COVERAGE_ON_PRS: true
+  MSBUILDDISABLENODEREUSE: 1
 
 jobs:
   analyze-cpp:
     name: Analyze (C/C++)
     if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
     runs-on: windows-2022
-    timeout-minutes: 60
+    timeout-minutes: 120
 
     permissions:
-      actions: read
+      actions: write
       contents: read
       security-events: write
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
-        clean: true
+        clean: false
 
     - name: Initialize CodeQL (C/C++)
       uses: github/codeql-action/init@v4
@@ -129,7 +130,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: Initialize CodeQL (${{ matrix.language }})
       uses: github/codeql-action/init@v4
