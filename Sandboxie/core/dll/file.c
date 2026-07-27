@@ -274,6 +274,9 @@ static NTSTATUS File_MigrateFile(
     const WCHAR *TruePath, const WCHAR *CopyPath,
     BOOLEAN IsWritePath, BOOLEAN WithContents);
 
+static BOOLEAN File_RefreshNewerCopy(
+    const WCHAR *TruePath, const WCHAR *CopyPath);
+
 static NTSTATUS File_MigrateJunction(
     const WCHAR *TruePath, const WCHAR *CopyPath,
     BOOLEAN IsWritePath);
@@ -494,6 +497,7 @@ static volatile LONG File_ShortNameFallbackParentMissingCacheNext = 0;
 
 static CRITICAL_SECTION *File_ShortNameFallbackCache_CritSec = NULL;
 
+BOOLEAN Dll_UseChromeSecurePreferencesHack = FALSE;
 
 
 //---------------------------------------------------------------------------
@@ -3978,6 +3982,26 @@ ReparseLoop:
             // let the system work on the true file
             //
 
+            //
+            // $Workaround$ - 3rd party fix - Chrome-Fix
+            // Chrome's Secure Preferences file must be migrated even on
+            // read-only access, so we can strip the encrypted hash entries.
+            // Without this, Chrome reads the original file with encrypted
+            // hashes that can't be validated in the sandbox, causing
+            // settings/extensions to be reset.
+            //
+
+            if (Dll_ImageType == DLL_IMAGE_GOOGLE_CHROME && Dll_UseChromeSecurePreferencesHack &&
+                    (DesiredAccess & FILE_DENIED_ACCESS) == 0) {
+
+                const WCHAR *filename = wcsrchr(TruePath, L'\\');
+                if (filename && _wcsicmp(filename, L"\\Secure Preferences") == 0) {
+
+                    // Force write access to trigger migration path
+                    DesiredAccess |= FILE_GENERIC_WRITE;
+                }
+            }
+
             if ((DesiredAccess & FILE_DENIED_ACCESS) == 0) {
 
                 if (TruePathColon)
@@ -4078,6 +4102,15 @@ ReparseLoop:
 
     if (! NT_SUCCESS(status))
         __leave;
+
+    // CopyNewer refreshes an existing regular sandbox copy before it is
+    // opened.  A failed or deferred refresh intentionally leaves the current
+    // copy available to the application.
+    if (HaveCopyFile && (FileType & TYPE_FILE) &&
+            (CreateDisposition == FILE_OPEN || CreateDisposition == FILE_OPEN_IF) &&
+            PATH_NOT_WRITE(mp_flags) && !(FileType & TYPE_DELETED)) {
+        File_RefreshNewerCopy(TruePath, CopyPath);
+    }
 
     //
     // check creation parameters again, now that we know the file type
